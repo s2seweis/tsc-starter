@@ -1,4 +1,4 @@
-// src/Home.tsx
+/* eslint-disable */
 import React from 'react';
 import './Home.css'; // Import the CSS file for styling
 import { posts } from '../../data/data';

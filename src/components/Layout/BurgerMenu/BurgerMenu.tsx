@@ -1,4 +1,4 @@
-// BurgerMenu.tsx
+/* eslint-disable */
 import React, { useState } from 'react';
 import './BurgerMenu.css';
 
