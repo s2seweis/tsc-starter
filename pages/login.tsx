@@ -1,6 +1,5 @@
-// pages/Login.tsx
-
 import React, { useState } from 'react';
+import Link from 'next/link'; // Import Link from next/link
 import styles from '../styles/login.module.scss';
 
 const Login: React.FC = () => {
@@ -38,6 +37,12 @@ const Login: React.FC = () => {
         </div>
         <button type="submit" className={styles.submitButton}>Login</button>
       </form>
+      {/* Add a button to navigate back to the home route */}
+      <div className={styles.goBackButton}>
+        <Link href="/">
+          <span>Go back to Home</span>
+        </Link>
+      </div>
     </div>
   );
 };

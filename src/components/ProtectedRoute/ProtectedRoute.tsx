@@ -1,21 +1,22 @@
-// components/ProtectedRoute.tsx
-
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-const ProtectedRoute: React.FC = ({ children }) => {
+interface ProtectedRouteProps {
+  isAuthenticated: boolean;
+}
+
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, isAuthenticated }) => {
   const router = useRouter();
   
   useEffect(() => {
-    const isAuthenticated = "admin";
-    
-    if (isAuthenticated) {
-      // Redirect to login page if not authenticated
+    // Redirect to login page if not authenticated
+    if (!isAuthenticated) {
       router.push('/login');
     }
-  }, []);
+  }, [isAuthenticated, router]);
 
-  return <>{children}</>;
+  // Render children only if authenticated
+  return isAuthenticated ? <>{children}</> : null;
 };
 
 export default ProtectedRoute;

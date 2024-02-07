@@ -1,0 +1,72 @@
+/* navbar.module.scss */
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+  }
+  
+  .navList {
+    list-style-type: none;
+    display: flex;
+  }
+  
+  .navItem {
+    margin-right: 1rem;
+  }
+  
+  .navLink {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem;
+  }
+  
+  .navLink:hover {
+    background-color: #555;
+  }
+
+  .sidebarToggle {
+    display: none; // Hide the button by default
+    
+    @media (max-width: 600px) {
+      display: block; // Show the button only when screen width is less than or equal to 600px
+    }
+  }
+
+  .menu1 {
+    display: flex; // Hide the button by default
+    
+    @media (max-width: 600px) {
+      display: none; // Show the button only when screen width is less than or equal to 600px
+    }
+  }
+
+  .select {
+    width: 200px;
+    margin-left: auto; /* Push the select to the right */
+    color: black;
+  }
+  
+  /* Style the dropdown indicator */
+  .select__indicator {
+    color: #333;
+  }
+  
+  /* Style the dropdown menu */
+  .select__menu {
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style the dropdown option */
+  .select__option {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  /* Style the selected option */
+  .select__option--is-selected {
+    background-color: #007bff;
+    color: white;
+  }
+  
