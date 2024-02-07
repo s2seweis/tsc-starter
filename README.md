@@ -43,7 +43,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Learn More
 
-## Comment: 
+## Comment - Test: 
 - Customize Keyboad Shortcuts for VS: Strg + P => Search Field: ">Open Keyboard Shortcuts"
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
