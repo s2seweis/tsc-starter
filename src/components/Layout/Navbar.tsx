@@ -1,8 +1,6 @@
-/* eslint-disable */
-
 import React from 'react';
 import { FaBars } from 'react-icons/fa';
-import Select from 'react-select'; // Import Select from react-select
+import Select, { ActionMeta, ValueType } from 'react-select'; // Import Select from react-select
 import styles from '../../../styles/navbar.module.scss';
 import { useSidebarContext } from '../../../context/SidebarContext'; // Import useSidebarContext hook
 import Link from 'next/link';
@@ -27,10 +25,12 @@ const Navbar: React.FC = () => {
   const { toggleSidebar } = useSidebarContext(); // Use useSidebarContext hook to access context values
   const router = useRouter(); // Initialize the router
 
-  const handleOptionChange = (selectedOption: Option) => {
-    // Use Link from next/link instead of window.location.href
-    // This will navigate to the selected option value
-    router.push(`/${selectedOption.value}`);
+  const handleOptionChange = (newValue: ValueType<Option>, actionMeta: ActionMeta<Option>) => {
+    if (newValue && 'value' in newValue) {
+      // Use Link from next/link instead of window.location.href
+      // This will navigate to the selected option value
+      router.push(`/${newValue.value}`);
+    }
   };
 
   return (
