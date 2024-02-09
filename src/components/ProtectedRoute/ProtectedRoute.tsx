@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 interface ProtectedRouteProps {
   isAuthenticated: boolean;
+  children: React.ReactNode; // Add children property
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, isAuthenticated }) => {
