@@ -52,3 +52,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Deployment to Netlify: !
 - https://www.netlify.com/blog/2020/11/30/how-to-deploy-next.js-sites-to-netlify/
+
+## Try Out - Mintlify: !
+-  https://writer.mintlify.com/
