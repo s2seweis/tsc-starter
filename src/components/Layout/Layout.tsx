@@ -1,12 +1,16 @@
 // Layout.tsx
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import { SidebarProvider } from '../../../context/SidebarContext'; // Import SidebarProvider
 import styles from '../../../styles/main.module.scss'
 
-const Layout: React.FC = ({ children }) => {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <SidebarProvider> {/* Wrap your components with SidebarProvider */}
       <Navbar />

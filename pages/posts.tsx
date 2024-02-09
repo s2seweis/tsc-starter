@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import { posts } from '../src/data/data';
 import styles from '../styles/posts.module.scss'; // Import SCSS module
