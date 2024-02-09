@@ -1,22 +1,24 @@
-import React, { createContext, useContext, useState } from 'react';
+// context/SidebarContext.tsx
+/* eslint-disable */
+
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface SidebarContextType {
   isSidebarOpen: boolean;
   toggleSidebar: () => void;
 }
 
-const SidebarContext = createContext<SidebarContextType>({
-  isSidebarOpen: false,
-  toggleSidebar: () => {},
-});
+const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
-export const useSidebarContext = () => useContext(SidebarContext);
+interface SidebarProviderProps {
+  children: ReactNode;
+}
 
-export const SidebarProvider: React.FC = ({ children }) => {
+export const SidebarProvider: React.FC<SidebarProviderProps> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(prevState => !prevState);
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
@@ -26,4 +28,10 @@ export const SidebarProvider: React.FC = ({ children }) => {
   );
 };
 
-export default SidebarContext;
+export const useSidebarContext = () => {
+  const context = useContext(SidebarContext);
+  if (!context) {
+    throw new Error('useSidebarContext must be used within a SidebarProvider');
+  }
+  return context;
+};
