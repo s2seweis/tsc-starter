@@ -3,9 +3,12 @@ import { FaBars } from 'react-icons/fa';
 import Select from 'react-select'; // Import Select from react-select
 import styles from '../../../styles/navbar.module.scss';
 import { useSidebarContext } from '../../../context/SidebarContext'; // Import useSidebarContext hook
+import Link from 'next/link';
+import AuthController from '../AuthController/AuthController';
+import { useRouter } from 'next/router'; // Import useRouter from next/router
 
 const options = [
-  { value: 'home', label: 'Home' },
+  { value: '', label: 'Home' },
   { value: 'posts', label: 'Posts' },
   { value: 'contact', label: 'Contact' },
   { value: 'dashboard', label: 'Dashboard' },
@@ -14,9 +17,12 @@ const options = [
 
 const Navbar: React.FC = () => {
   const { toggleSidebar } = useSidebarContext(); // Use useSidebarContext hook to access context values
+  const router = useRouter(); // Initialize the router
 
   const handleOptionChange = (selectedOption) => {
-    window.location.href = `/${selectedOption.value}`;
+    // Use Link from next/link instead of window.location.href
+    // This will navigate to the selected option value
+    router.push(`/${selectedOption.value}`);
   };
 
   return (
@@ -29,23 +35,27 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      <div className={styles.menu1}>
-        <div className={styles.navItem}>
-          <a href="/" className={styles.navLink}>Home</a>
-        </div>
-        <div className={styles.navItem}>
-          <a href="/posts" className={styles.navLink}>Posts</a>
-        </div>
-        <div className={styles.navItem}>
-          <a href="/contact" className={styles.navLink}>Contact</a>
-        </div>
-        <div className={styles.navItem}>
-          <a href="/dashboard" className={styles.navLink}>Dashboard</a>
-        </div>
-        <div className={styles.navItem}>
-          <a href="/login" className={styles.navLink}>Login</a>
-        </div>
+      <header className={styles.menu1}>
+        <nav className={styles.navbar}>
+          <div className={styles.logo}>
+            <img style={{ width: "80px" }} src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg" alt="Logo" />
+          </div>
+          <div className={styles.navLinks}>
+            {options.map(option => (
+              <div key={option.value}>
+                <Link href={`/${option.value}`}>
+                  <span className={styles.navLink}>{option.label}</span>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </nav>
+      </header>
+
+      <div className='loginButton' style={{marginLeft:"10%"}}>
+        <AuthController />
       </div>
+
       <Select
         className={styles.select} // Apply CSS class for styling
         options={options} // Pass options array

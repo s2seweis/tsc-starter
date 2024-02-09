@@ -25,21 +25,23 @@
   }
   
   .goBackButton {
-    margin-top: 20px;
+    // margin-top: 20px;
+    margin: 15px;
   }
   
   .goBackButton a {
     text-decoration: none !important;
-    color: #007bff;
+    color: white;
     font-weight: bold;
-    padding: 10px 20px;
-    border: 2px solid #007bff;
+    padding: 10px 10px;
+    // border: 1px solid rgb(229, 235, 241);
     border-radius: 8px;
     transition: background-color 0.3s, color 0.3s;
+    background: rgb(100, 142, 194);
   }
   
   .goBackButton a:hover {
-    background-color: #007bff;
+    background-color: black;
     color: #fff;
   }
   

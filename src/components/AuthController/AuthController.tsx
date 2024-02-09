@@ -16,8 +16,8 @@ const AuthController: React.FC = () => {
 
   return (
     <div>
-      <p>Authentication status: {isAuthenticated ? 'Authenticated' : 'Not Authenticated'}</p>
-      <button onClick={handleToggleAuth}>
+      {/* <p>Authentication status: {isAuthenticated ? 'Authenticated' : 'Not Authenticated'}</p> */}
+      <button style={{padding:"5px", marginLeft:"20px"}} onClick={handleToggleAuth}>
         {isAuthenticated ? 'Logout' : 'Login'}
       </button>
     </div>

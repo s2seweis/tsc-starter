@@ -14,36 +14,46 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1>Login</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
-          <label htmlFor="username">Username</label>
-          <input 
-            type="text" 
-            id="username" 
-            value={username} 
-            onChange={(e) => setUsername(e.target.value)} 
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="password">Password</label>
-          <input 
-            type="password" 
-            id="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-          />
-        </div>
-        <button type="submit" className={styles.submitButton}>Login</button>
-      </form>
-      {/* Add a button to navigate back to the home route */}
+    <div>
+
       <div className={styles.goBackButton}>
         <Link href="/">
-          <span>Go back to Home</span>
+          <span>Go Back</span>
         </Link>
       </div>
+
+      <div className={styles.container}>
+        <h1>Login</h1>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button type="submit" className={styles.submitButton}>Login</button>
+        </form>
+        {/* Add a button to navigate back to the home route */}
+        {/* <div className={styles.goBackButton}>
+          <Link href="/">
+            <span>Go back to Home</span>
+          </Link>
+        </div> */}
+      </div>
     </div>
+
   );
 };
 

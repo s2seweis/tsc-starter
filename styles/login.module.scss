@@ -8,6 +8,8 @@
     border-radius: 5px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    // padding: 20px;
   }
   
   h1 {
@@ -48,21 +50,27 @@
   }
   
   .goBackButton {
-    margin-top: 20px;
+    // margin-top: 20px;
+    margin: 15px;
   }
   
   .goBackButton a {
-    text-decoration: none;
-    color: #007bff;
+    text-decoration: none !important;
+    color: white;
     font-weight: bold;
-    padding: 10px 20px;
-    border: 2px solid #007bff;
+    padding: 10px 10px;
+    // border: 1px solid rgb(229, 235, 241);
     border-radius: 8px;
     transition: background-color 0.3s, color 0.3s;
+    background: rgb(100, 142, 194);
   }
   
   .goBackButton a:hover {
-    background-color: #007bff;
+    background-color: black;
     color: #fff;
+  }
+
+  .form{
+    padding: 20px;
   }
   

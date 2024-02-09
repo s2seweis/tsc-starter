@@ -13,13 +13,13 @@ const Dashboard: React.FC = () => {
   return (
     <ProtectedRoute isAuthenticated={isAuthenticated}>
       <div>
-        <h1>Dashboard</h1>
-        {/* Dashboard content */}
         <div className={styles.goBackButton}>
           <Link href="/">
-            <span>Go back to Home</span>
+            <span>Go Back</span>
           </Link>
         </div>
+        <h1 style={{textAlign:"center"}}>Dashboard</h1>
+        {/* Dashboard content */}
       </div>
     </ProtectedRoute>
   );

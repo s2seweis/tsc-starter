@@ -21,10 +21,12 @@
     cursor: pointer;
     font-size: 24px;
     color: #fff;
+    
   }
   
   .nav {
     margin-top: 60px;
+    background: white;
   }
   
   .navList {
@@ -45,5 +47,19 @@
   
   .navList li a:hover {
     background-color: #555;
+  }
+
+  .navLinks{
+    // margin: 15px;
+    // margin-top: 50px !important;
+    padding: 20px;
+    text-align: center;
+    margin-top: 70px;
+    border: 1px solid #dae3e5;
+  }
+
+  .navLinksStyle{
+    margin-top: 20px;
+    
   }
   

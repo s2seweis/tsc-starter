@@ -1,6 +1,6 @@
 import React from 'react';
 import { posts } from '../src/data/data';
-import styles from '../styles/home.module.scss'; // Import SCSS module
+import styles from '../styles/posts.module.scss'; // Import SCSS module
 
 interface Post {
   id: number;
@@ -10,7 +10,7 @@ interface Post {
 
 const Posts: React.FC = () => {
   return (
-    <div className={styles.homeContainer}>
+    <div className={styles.postsContainer}>
       <div className={styles.header}>
         <h1>React Blog Posts</h1>
       </div>
