@@ -1,0 +1,44 @@
+.mobile-banner {
+    width: 100%;
+    padding: 20px;
+    background-color: #3498db;
+    /* Set your desired background color */
+    color: #fff;
+    /* Set your desired text color */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .mobile-banner-content {
+        text-align: center;
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #fff;
+            /* Set your desired button color */
+            color: #3498db;
+            /* Set your desired button text color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+}
+
+@media (min-width: 450px) {
+    .mobile-banner {
+        display: none;
+        margin: auto !important;
+        width: 80%;
+    }
+}

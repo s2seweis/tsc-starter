@@ -1,5 +1,38 @@
-/* styles/main.module.scss */
+// main.module.scss
 
-.content{
-    // margin: 15px;
+@import './banner/skyscraperStyles.scss';
+
+.content-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 80%;
+  
 }
+
+.banner {
+  width: 100%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.banner.skyscraper {
+  @import './banner/skyscraperStyles.scss';
+}
+
+.mobile-banner {
+    /* Mobile Banner Styles */
+  }
+   
+  .medium-rectangle {
+    /* Medium Rectangle Styles */
+  }
+  
+  .leaderboard {
+    /* Leaderboard Styles */
+  }
