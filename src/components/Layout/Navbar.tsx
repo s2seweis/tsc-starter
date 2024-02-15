@@ -21,6 +21,7 @@ const options: Option[] = [
   { value: 'contact', label: 'Contact' },
   { value: 'dashboard', label: 'Dashboard' },
   { value: 'login', label: 'Login' },
+  { value: 'calender', label: 'Calender' },
 ];
 
 const Navbar: React.FC = () => {

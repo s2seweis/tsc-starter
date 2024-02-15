@@ -39,7 +39,7 @@
 .menu1 {
   display: flex; // Hide the button by default
   
-  @media (max-width: 600px) {
+  @media (max-width: 860px) {
     display: none; // Show the button only when screen width is less than or equal to 600px
   }
 }
