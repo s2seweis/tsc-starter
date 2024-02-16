@@ -1,22 +1,39 @@
 import React from 'react';
-// import Head from 'next/head';
-// import Link from 'next/link';
 import styles from '../styles/pages/index.module.scss';
 import AuthController from '../src/components/AuthController/AuthController';
 import FullBanner from '../src/components/Banner/FullBanner';
+import Seo from '../src/components/Seo/Seo';
 
+interface LandingPageProps {
+  // Add any additional props for your landing page
+}
 
-const LandingPage: React.FC = () => {
+interface SEOProps {
+  title: string;
+  description: string;
+  ogImage?: string;
+}
+
+const LandingPage: React.FC<LandingPageProps> = () => {
+  const seoProps: SEOProps = {
+    title: "Your Landing Page Title1",
+    description: "Description of your landing page for SEO",
+    ogImage: "URL to your Open Graph image (optional)",
+  };
+
   return (
-    <div className={styles.container}>
-      <FullBanner/>
-      <section style={{marginTop:"50px"}} className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1 style={{textAlign:"center"}}>Welcome to Your Next.js App</h1>
-          <p style={{textAlign:"center"}}>Build fast, modern web applications with Next.js</p>
-        </div>
-      </section>
-    </div>
+    <>
+      <Seo {...seoProps} />
+      <div className={styles.container}>
+        <FullBanner />
+        <section style={{ marginTop: "50px" }} className={styles.hero}>
+          <div className={styles.heroContent}>
+            <h1 style={{ textAlign: "center" }}>Welcome to Your Next.js App</h1>
+            <p style={{ textAlign: "center" }}>Build fast, modern web applications with Next.js</p>
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 

@@ -11,6 +11,8 @@ interface CalendarEvent {
   date: Date;
   imageUrl: string;
   state?: string; // Add state property
+  isMobileComponent?:boolean;
+  
 }
 
 const CalendarList: React.FC = () => {
