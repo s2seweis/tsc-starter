@@ -27,6 +27,7 @@ const Sidebar: React.FC = () => {
           <div className={styles.navLinksStyle}><Link style={{textDecoration:"none"}} href="/posts"><span className={styles.navLink}>Posts</span></Link></div>
           <div className={styles.navLinksStyle}><Link style={{textDecoration:"none"}} href="/contact"><span className={styles.navLink}>Contact</span></Link></div>
           <div className={styles.navLinksStyle}><Link style={{textDecoration:"none"}} href="/dashboard"><span className={styles.navLink}>Dashboard</span></Link></div>
+          <div className={styles.navLinksStyle}><Link style={{textDecoration:"none"}} href="/calender"><span className={styles.navLink}>Calender</span></Link></div>
         </div>
       </nav>
     </div>

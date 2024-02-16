@@ -8,6 +8,7 @@
     height: 100%;
     background-color: #333;
     transition: left 0.3s ease-in-out;
+    z-index: 500 !important;
   }
   
   .open {
@@ -21,6 +22,7 @@
     cursor: pointer;
     font-size: 24px;
     color: #fff;
+    z-index: 100;
     
   }
   
