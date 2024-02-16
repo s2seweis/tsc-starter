@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { FaBars } from 'react-icons/fa';
-import styles from '../../../styles/sidebar.module.scss';
+import styles from '../../../styles/layout/sidebar.module.scss';
 import { useSidebarContext } from '../../../context/SidebarContext'; // Import useSidebarContext hook
 import Link from 'next/link';
 

@@ -1,0 +1,33 @@
+// FullBanner.scss
+
+.full-banner {
+    text-align: center;
+    border-radius: 8px;
+    padding: 20px;
+    background: #3498db;
+  
+    h2 {
+      font-size: 24px; // Add your h2 styles here
+      margin-bottom: 10px;
+    }
+  
+    p {
+      font-size: 16px; // Add your p styles here
+      margin-bottom: 15px;
+    }
+  
+    button {
+      background-color: #fff !important;
+      color: black !important;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #3498db;
+        color: #fff;
+      }
+    }
+  }
+  

@@ -2,7 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import calendarEvents from '../src/data/events';
-import '../styles/calender.scss'; // Import CSS for styling
+// import Mobile from '../src/components/Banner/Mobile';
+import MobileInner from '../src/components/Banner/MobileInner';
+import '../styles/components/calender.scss'; // Import CSS for styling
+import FullBanner from '../src/components/Banner/FullBanner';
 
 interface CalendarEvent {
   id: number;
@@ -51,26 +54,41 @@ const CalendarList: React.FC = () => {
 
   const groupedEventsByMonth = () => {
     const groupedByMonth: { [key: string]: CalendarEvent[] } = {};
+    let eventCounter = 0;
 
     filteredEvents.forEach((event) => {
       const monthKey = event.date.toLocaleString('default', { month: 'long', year: 'numeric' });
       if (!groupedByMonth[monthKey]) {
         groupedByMonth[monthKey] = [];
       }
+
+      if (eventCounter % 15 === 0 && eventCounter !== 0) {
+        groupedByMonth[monthKey].push({ isMobileComponent: true } as CalendarEvent);
+      }
+
       groupedByMonth[monthKey].push(event);
+      eventCounter += 1;
     });
 
     return Object.entries(groupedByMonth).map(([month, events]) => (
       <div key={month}>
         <h2>{month}</h2>
         <div className="event-list">
-          {events.map((event) => (
-            <div key={event.id} className="event-card">
-              <div className="event-details">
-                <h3>{event.title}</h3>
-                <p>Date: {event.date.toDateString()}</p>
-              </div>
-              <img src={event.imageUrl} alt="Event Thumbnail" className="event-image" />
+          {events.map((event, index) => (
+            <div key={index} className="event-card" 
+            // style={{display:"inline-table"}}
+            >
+              {event.isMobileComponent ? (
+                <MobileInner key={`mobile-component-${index}`} />
+              ) : (
+                <>
+                  <div className="event-details">
+                    <h3>{event.title}</h3>
+                    <p>Date: {event.date.toDateString()}</p>
+                  </div>
+                  <img src={event.imageUrl} alt="Event Thumbnail" className="event-image" />
+                </>
+              )}
             </div>
           ))}
         </div>
@@ -80,7 +98,8 @@ const CalendarList: React.FC = () => {
 
   return (
     <div className="calendar-container">
-      <div className="filter-section" style={{display:"grid"}}>
+      <FullBanner/>
+      <div className="filter-section" style={{ display: 'grid' }}>
         <label>Jahr:</label>
         <select value={selectedYear || '0'} onChange={handleYearChange}>
           <option value="0">All</option>
@@ -89,7 +108,7 @@ const CalendarList: React.FC = () => {
         </select>
       </div>
 
-      <div className="filter-section" style={{display:"grid"}}>
+      <div className="filter-section" style={{ display: 'grid' }}>
         <label>Monat:</label>
         <select value={selectedMonth !== null ? String(selectedMonth + 1) : '0'} onChange={handleMonthChange}>
           <option value="0">All</option>

@@ -2,8 +2,8 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import ProtectedRoute from '../src/components/ProtectedRoute/ProtectedRoute';
-import Link from 'next/link'; // Import Link from next/link
-import styles from '../styles/dashboard.module.scss';
+import GoBackButton from '../src/components/Button/GoBackButton';
+// import styles from '../styles/pages/dashboard.module.scss';
 
 const Dashboard: React.FC = () => {
   const { isAuthenticated } = useAuth();
@@ -12,14 +12,11 @@ const Dashboard: React.FC = () => {
 
   return (
     <ProtectedRoute isAuthenticated={isAuthenticated}>
-      <div>
-        <div className={styles.goBackButton}>
-          <Link href="/">
-            <span>Go Back</span>
-          </Link>
-        </div>
+      <div className='dash'>
+
+        <GoBackButton/>
+
         <h1 style={{textAlign:"center"}}>Dashboard</h1>
-        {/* Dashboard content */}
       </div>
     </ProtectedRoute>
   );

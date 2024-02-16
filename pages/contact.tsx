@@ -1,7 +1,7 @@
 // pages/Contact.tsx
 
 import React from 'react';
-import styles from '../styles/contact.module.scss';
+import styles from '../styles/pages/contact.module.scss';
 
 const Contact: React.FC = () => {
   return (

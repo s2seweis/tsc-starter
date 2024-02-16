@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link'; // Import Link from next/link
-import styles from '../styles/login.module.scss';
+import styles from '../styles/pages/login.module.scss';
+import GoBackButton from '../src/components/Button/GoBackButton';
+
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -16,11 +18,7 @@ const Login: React.FC = () => {
   return (
     <div>
 
-      <div className={styles.goBackButton}>
-        <Link href="/">
-          <span>Go Back</span>
-        </Link>
-      </div>
+      <GoBackButton/>
 
       <div className={styles.container}>
         <h1>Login</h1>
