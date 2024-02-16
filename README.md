@@ -1,57 +1,62 @@
-# Getting Started with Create React App
 
-## Just a Test
+```markdown
+# Next.js Blog and Event Calendar
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Next.js Blog and Event Calendar! This web application, built with TypeScript and React, serves as both a blog platform and an event calendar, providing a seamless experience for users interested in reading articles and staying updated on upcoming events.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### 1. Blog Platform
+- Browse a variety of articles on different topics.
+- Engage with the community through comments and discussions.
+- Discover featured posts and popular articles.
 
-### `npm start`
+### 2. Event Calendar
+- Stay informed about upcoming events, workshops, and meetups.
+- Filter events by year, month, and state for a personalized experience.
+- Explore detailed event information, including dates, venues, and featured speakers.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 3. Advanced Layout Setup
+- Responsive design for a seamless experience on both web and mobile devices.
+- Advertisements strategically placed for effective promotion and engagement.
+- Intuitive navigation and user-friendly interface.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+1. Clone the repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone https://github.com/your-username/nextjs-blog-event-calendar.git
+   ```
 
-### `npm run build`
+2. Install dependencies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   cd nextjs-blog-event-calendar
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Run the development server:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   npm run dev
+   ```
 
-### `npm run eject`
+Visit [http://localhost:3000](http://localhost:3000) in your browser to explore the Next.js Blog and Event Calendar.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Technologies Used
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Next.js
+- React
+- TypeScript
+- CSS Modules and SCSS for styling
+- External libraries for advanced layout and calendar features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Contributing
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Contributions are welcome! Feel free to open issues for bug reports, feature requests, or submit pull requests to enhance the functionality of the application.
 
-## Learn More
+## License
 
-## Comment - Test: 
-- Customize Keyboad Shortcuts for VS: Strg + P => Search Field: ">Open Keyboard Shortcuts"
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-## Deployment to Netlify: !
-- https://www.netlify.com/blog/2020/11/30/how-to-deploy-next.js-sites-to-netlify/
-
-## Try Out - Mintlify: !
--  https://writer.mintlify.com/
+This project is licensed under the [MIT License](LICENSE).
+```

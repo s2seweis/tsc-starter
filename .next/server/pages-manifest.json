@@ -4,5 +4,8 @@
   "/_document": "pages/_document.js",
   "/calender": "pages/calender.js",
   "/": "pages/index.js",
-  "/dashboard": "pages/dashboard.js"
+  "/contact": "pages/contact.js",
+  "/posts": "pages/posts.js",
+  "/dashboard": "pages/dashboard.js",
+  "/login": "pages/login.js"
 }
