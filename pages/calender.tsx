@@ -1,10 +1,8 @@
 // CalendarList.tsx
-
 import React, { useState, useEffect } from 'react';
 import calendarEvents from '../src/data/events';
-// import Mobile from '../src/components/Banner/Mobile';
 import MobileInner from '../src/components/Banner/MobileInner';
-import '../styles/components/calender.scss'; // Import CSS for styling
+import '../styles/components/calender.scss';
 import FullBanner from '../src/components/Banner/FullBanner';
 
 interface CalendarEvent {
@@ -12,12 +10,14 @@ interface CalendarEvent {
   title: string;
   date: Date;
   imageUrl: string;
+  state?: string; // Add state property
 }
 
 const CalendarList: React.FC = () => {
   const [filteredEvents, setFilteredEvents] = useState<CalendarEvent[]>(calendarEvents);
   const [selectedYear, setSelectedYear] = useState<number | null>(2024);
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null);
+  const [selectedState, setSelectedState] = useState<string | null>(null);
   const [isClient, setIsClient] = useState(false);
 
   const filterEvents = () => {
@@ -29,6 +29,10 @@ const CalendarList: React.FC = () => {
 
     if (selectedMonth !== null) {
       filtered = filtered.filter((event) => event.date.getMonth() === selectedMonth);
+    }
+
+    if (selectedState !== null) {
+      filtered = filtered.filter((event) => event.state === selectedState);
     }
 
     setFilteredEvents(filtered);
@@ -44,9 +48,14 @@ const CalendarList: React.FC = () => {
     setSelectedMonth(month === 0 ? null : month - 1);
   };
 
+  const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const state = event.target.value;
+    setSelectedState(state === '0' ? null : state);
+  };
+
   useEffect(() => {
     filterEvents();
-  }, [selectedYear, selectedMonth]);
+  }, [selectedYear, selectedMonth, selectedState]);
 
   useEffect(() => {
     setIsClient(true);
@@ -75,15 +84,14 @@ const CalendarList: React.FC = () => {
         <h2>{month}</h2>
         <div className="event-list">
           {events.map((event, index) => (
-            <div key={index} className="event-card" 
-            // style={{display:"inline-table"}}
-            >
+            <div key={index} className="event-card">
               {event.isMobileComponent ? (
                 <MobileInner key={`mobile-component-${index}`} />
               ) : (
                 <>
                   <div className="event-details">
                     <h3>{event.title}</h3>
+                    <h5>{event.state}</h5>
                     <p>Date: {event.date.toDateString()}</p>
                   </div>
                   <img src={event.imageUrl} alt="Event Thumbnail" className="event-image" />
@@ -124,6 +132,16 @@ const CalendarList: React.FC = () => {
           <option value="10">October</option>
           <option value="11">November</option>
           <option value="12">December</option>
+        </select>
+      </div>
+
+      <div className="filter-section" style={{ display: 'grid' }}>
+        <label>Bundesland:</label>
+        <select value={selectedState || '0'} onChange={handleStateChange}>
+          <option value="0">All</option>
+          <option value="Berlin">Berlin</option>
+          <option value="Hamburg">Hamburg</option>
+          {/* Add more states as needed */}
         </select>
       </div>
 

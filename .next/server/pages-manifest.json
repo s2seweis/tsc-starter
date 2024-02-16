@@ -3,9 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/calender": "pages/calender.js",
-  "/": "pages/index.js",
-  "/contact": "pages/contact.js",
-  "/posts": "pages/posts.js",
-  "/dashboard": "pages/dashboard.js",
-  "/login": "pages/login.js"
+  "/404": "pages/404.js",
+  "/": "pages/index.js"
 }
