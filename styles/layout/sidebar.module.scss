@@ -4,11 +4,12 @@
     position: fixed;
     top: 0;
     left: -200px;
-    width: 200px;
+    // width: 200px;
     height: 100%;
     background-color: #333;
     transition: left 0.3s ease-in-out;
     z-index: 500 !important;
+    border: 0.5px solid lightgray;
   }
   
   .open {
@@ -17,18 +18,25 @@
   
   .sidebarToggle {
     position: absolute;
-    top: 20px;
-    left: 10px;
+    top: 10px;
+    // left: 10px;
+    right: 10px;
     cursor: pointer;
     font-size: 24px;
     color: #fff;
     z-index: 100;
+    // border: 0.5px solid lightgray;
+    padding: 5px;
+    align-items: center;
+    display: flex;
+    font-size: xx-large;
     
   }
   
   .nav {
-    margin-top: 60px;
+    margin-top: 120px;
     background: white;
+    height: 69.4%;
   }
   
   .navList {
@@ -57,11 +65,17 @@
     padding: 20px;
     text-align: center;
     margin-top: 70px;
-    border: 1px solid #dae3e5;
+    // border: 1px solid #dae3e5;
+    // height: 99%;
+    font-size: 1.3rem;
   }
 
   .navLinksStyle{
     margin-top: 20px;
-    
+  }
+
+  .active {
+    color: #ff5733; /* Adjust the color to your preference */
+    font-weight: bold;
   }
   

@@ -18,9 +18,9 @@ interface Option {
 const options: Option[] = [
   { value: '', label: 'Home' },
   { value: 'posts', label: 'Posts' },
-  { value: 'contact', label: 'Contact' },
-  { value: 'dashboard', label: 'Dashboard' },
-  { value: 'login', label: 'Login' },
+  // { value: 'contact', label: 'Contact' },
+  // { value: 'dashboard', label: 'Dashboard' },
+  // { value: 'login', label: 'Login' },
   { value: 'calender', label: 'Calender' },
 ];
 
@@ -38,13 +38,16 @@ const Navbar: React.FC = () => {
 
   return (
     <nav style={{ display: "flex" }} className={styles.navbar}>
-      <div className={styles.navList}>
-        <div className={styles.navItem}>
-          <button className={styles.sidebarToggle} onClick={toggleSidebar}>
-            <FaBars />
-          </button>
+      {/* <div className={styles.navList}> */}
+      <div className={styles.navItem}>
+        <button className={styles.sidebarToggle} onClick={toggleSidebar}>
+          <FaBars />
+        </button>
+        <div className={styles.logoMobile}>
+          <img style={{ width: "80px" }} src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg" alt="Logo" />
         </div>
       </div>
+      {/* </div> */}
 
       <header className={styles.menu1}>
         <nav className={styles.navbar}>
@@ -63,8 +66,8 @@ const Navbar: React.FC = () => {
         </nav>
       </header>
 
-      <div className='loginButton' style={{marginLeft:"10%"}}>
-        <AuthController />
+      <div className='loginButton' style={{ marginRight: "15px" }}>
+        {/* <AuthController /> */}
       </div>
 
       <Select
@@ -73,6 +76,7 @@ const Navbar: React.FC = () => {
         defaultValue={options[0]} // Set default value
         onChange={handleOptionChange} // Redirect to selected option value
       />
+
     </nav>
   );
 };

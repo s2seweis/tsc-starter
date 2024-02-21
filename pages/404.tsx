@@ -3,16 +3,14 @@
 import React from 'react';
 import Link from 'next/link';
 
-const Custom404: React.FC = () => {
+const NotFound: React.FC = () => {
   return (
-    <div style={{ textAlign: 'center', padding: '50px' }}>
-      <h1>404 - Page Not Found111</h1>
-      <p>The page you are looking for does not exist.</p>
-      <Link href="/">
-        <a>Go back to the homepage</a>
-      </Link>
+    <div style={{width:"70%", margin:"auto" }}>
+      <h1>404 - Not Found</h1>
+      <p>The page you are looking for might not exist or has been moved.</p>
+      <Link href="/">Go back to the homepage</Link>
     </div>
   );
 };
 
-export default Custom404;
+export default NotFound;
