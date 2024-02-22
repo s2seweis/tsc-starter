@@ -18,7 +18,7 @@
   
   .socialIcon {
     font-size: 1.5rem;
-    color: #fff;
+    color: #fff !important;
     margin: 0 0.5rem;
     transition: color 0.3s ease-in-out;
   }
@@ -29,5 +29,9 @@
   
   .copyRight {
     font-size: 0.9rem;
+  }
+
+  a {
+    color: white;
   }
   

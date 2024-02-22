@@ -1,14 +1,16 @@
-// components/layout/sidebar.tsx
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaRegWindowClose, FaAngleDown, FaAngleRight } from 'react-icons/fa';
 import { useSidebarContext } from '../../../context/SidebarContext';
 import Link from 'next/link';
 import '../../../styles/layout/sidebar.scss'; // Import your SCSS file
 import { menuItems } from './menuItems'; // Import the updated menuItems
+import AuthController from '../AuthController/AuthController';
 
 const Sidebar: React.FC = () => {
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();
+  console.log("line:100", toggleSidebar);
+  console.log("line:101", isSidebarOpen);
+  
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
 
@@ -56,12 +58,24 @@ const Sidebar: React.FC = () => {
     </div>
   );
 
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (overlayRef.current && event.target === overlayRef.current) {
+      toggleSidebar();
+    }
+  };
+
   return (
     <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+      <div className="overlay" ref={overlayRef} onClick={handleOverlayClick}></div>
       <div className="sidebarToggle" onClick={toggleSidebar}>
         <FaRegWindowClose />
       </div>
       <nav className="nav">
+        <div className='logo' style={{display:"flex", justifyContent:"center"}}>
+          <img style={{ width: "80px", marginTop:"20px" }} src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg" alt="Logo" />
+        </div>
         <div className="navLinks">
           {menuItems.map((menuItem) => (
             <span
@@ -73,6 +87,9 @@ const Sidebar: React.FC = () => {
               {menuItem.submenus && isSubMenuActive(menuItem.title) && renderSubMenu(menuItem.submenus)}
             </span>
           ))}
+        </div>
+        <div className='controllerContainer' style={{marginTop:"0px"}}>
+          <AuthController/>
         </div>
       </nav>
     </div>

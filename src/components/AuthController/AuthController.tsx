@@ -4,7 +4,6 @@ import { useAuth } from '../../../context/AuthContext';
 
 const AuthController: React.FC = () => {
   const { isAuthenticated, login, logout } = useAuth();
-  console.log("line:1", isAuthenticated);
   
   const handleToggleAuth = () => {
     if (isAuthenticated) {
@@ -15,9 +14,9 @@ const AuthController: React.FC = () => {
   };
 
   return (
-    <div>
+    <div style={{display:"flex", justifyContent:"center"}}>
       {/* <p>Authentication status: {isAuthenticated ? 'Authenticated' : 'Not Authenticated'}</p> */}
-      <button style={{padding:"5px", marginLeft:"20px"}} onClick={handleToggleAuth}>
+      <button style={{padding:"5px", marginLeft:"0px"}} onClick={handleToggleAuth}>
         {isAuthenticated ? 'Logout' : 'Login'}
       </button>
     </div>

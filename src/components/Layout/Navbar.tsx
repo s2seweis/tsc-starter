@@ -1,15 +1,12 @@
-/* eslint-disable */
-
-import React from 'react';
-import { FaBars } from 'react-icons/fa';
-import Select, { ActionMeta, SingleValue } from 'react-select'; // Import Select from react-select
+import React, { useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa'; // Import FaTimes for the close icon
+import Select, { ActionMeta, SingleValue } from 'react-select';
 import styles from '../../../styles/layout/navbar.module.scss';
-import { useSidebarContext } from '../../../context/SidebarContext'; // Import useSidebarContext hook
+import { useSidebarContext } from '../../../context/SidebarContext';
 import Link from 'next/link';
 import AuthController from '../AuthController/AuthController';
-import { useRouter } from 'next/router'; // Import useRouter from next/router
+import { useRouter } from 'next/router';
 
-// Define interface for option object
 interface Option {
   value: string;
   label: string;
@@ -18,36 +15,39 @@ interface Option {
 const options: Option[] = [
   { value: '', label: 'Home' },
   { value: 'posts', label: 'Posts' },
-  // { value: 'contact', label: 'Contact' },
-  // { value: 'dashboard', label: 'Dashboard' },
-  // { value: 'login', label: 'Login' },
   { value: 'calender', label: 'Calender' },
 ];
 
 const Navbar: React.FC = () => {
-  const { toggleSidebar } = useSidebarContext(); // Use useSidebarContext hook to access context values
-  const router = useRouter(); // Initialize the router
+  const {isSidebarOpen, toggleSidebar } = useSidebarContext();
+  console.log("Line:200", isSidebarOpen);
+  
+  const router = useRouter();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleOptionChange = (newValue: SingleValue<Option>, actionMeta: ActionMeta<Option>) => {
     if (newValue && 'value' in newValue) {
-      // Use Link from next/link instead of window.location.href
-      // This will navigate to the selected option value
       router.push(`/${newValue.value}`);
+      setIsMenuOpen(false); // Close the menu when an option is selected
     }
+  };
+
+  const handleToggleClick = () => {
+    toggleSidebar();
+    setIsMenuOpen((prev) => !prev); // Toggle the menu state
   };
 
   return (
     <nav style={{ display: "flex" }} className={styles.navbar}>
-      {/* <div className={styles.navList}> */}
       <div className={styles.navItem}>
-        <button className={styles.sidebarToggle} onClick={toggleSidebar}>
-          <FaBars />
+        <button className={styles.sidebarToggle} onClick={handleToggleClick}>
+          {isSidebarOpen ? <FaTimes /> : <FaBars />}
+          {/* {isMenuOpen ? <FaTimes /> : <FaBars />} */}
         </button>
         <div className={styles.logoMobile}>
-          <img style={{ width: "80px" }} src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg" alt="Logo" />
+          <img style={{ width: "80px", marginRight:"15px" }} src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg" alt="Logo" />
         </div>
       </div>
-      {/* </div> */}
 
       <header className={styles.menu1}>
         <nav className={styles.navbar}>
@@ -71,12 +71,11 @@ const Navbar: React.FC = () => {
       </div>
 
       <Select
-        className={styles.select} // Apply CSS class for styling
-        options={options} // Pass options array
-        defaultValue={options[0]} // Set default value
-        onChange={handleOptionChange} // Redirect to selected option value
+        className={styles.select}
+        options={options}
+        defaultValue={options[0]}
+        onChange={handleOptionChange}
       />
-
     </nav>
   );
 };

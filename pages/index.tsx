@@ -25,8 +25,10 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     <>
       <Seo {...seoProps} />
       <div className={styles.container}>
+        <section style={{display:"flex", justifyContent:"center"}}>
         <FullBanner />
-        <section style={{ marginTop: "50px" }} className={styles.hero}>
+        </section>
+        <section style={{ marginTop: "" }} className={styles.hero}>
           <div className={styles.heroContent}>
             <h1 style={{ textAlign: "center" }}>Welcome to Your Next.js App</h1>
             <p style={{ textAlign: "center" }}>Build fast, modern web applications with Next.js</p>
