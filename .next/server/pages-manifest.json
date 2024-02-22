@@ -4,5 +4,5 @@
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
   "/calender": "pages/calender.js",
-  "/dashboard": "pages/dashboard.js"
+  "/posts": "pages/posts.js"
 }
