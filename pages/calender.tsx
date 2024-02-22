@@ -3,7 +3,8 @@ import calendarEvents from '../src/data/events';
 import MobileInner from '../src/components/Banner/MobileInner';
 import '../styles/components/calender.scss';
 import FullBanner from '../src/components/Banner/FullBanner';
-import Select, { ActionMeta, OptionTypeBase, ValueType } from 'react-select';
+import Select, { ValueType } from 'react-select'; // Import react-select
+import { OptionTypeBase } from 'react-select/src/types';
 
 interface CalendarEvent {
   id: number;
@@ -15,30 +16,30 @@ interface CalendarEvent {
 }
 
 const stateOptions = [
-  { value: '', label: 'Alle' }, // 'All' is represented by an empty string
-  { value: 'Baden-Württemberg', label: 'Baden-Württemberg' },
-  { value: 'Bayern', label: 'Bayern' },
+  { value: '0', label: 'All' },
   { value: 'Berlin', label: 'Berlin' },
+  { value: 'Hamburg', label: 'Hamburg' },
+  { value: 'Baden-Württemberg', label: 'Baden-Württemberg' },
+  { value: 'Bavaria', label: 'Bavaria' },
   { value: 'Brandenburg', label: 'Brandenburg' },
   { value: 'Bremen', label: 'Bremen' },
-  { value: 'Hamburg', label: 'Hamburg' },
-  { value: 'Hessen', label: 'Hessen' },
+  { value: 'Hesse', label: 'Hesse' },
+  { value: 'Lower Saxony', label: 'Lower Saxony' },
   { value: 'Mecklenburg-Vorpommern', label: 'Mecklenburg-Vorpommern' },
-  { value: 'Niedersachsen', label: 'Niedersachsen' },
-  { value: 'Nordrhein-Westfalen', label: 'Nordrhein-Westfalen' },
-  { value: 'Rheinland-Pfalz', label: 'Rheinland-Pfalz' },
+  { value: 'North Rhine-Westphalia', label: 'North Rhine-Westphalia' },
+  { value: 'Rhineland-Palatinate', label: 'Rhineland-Palatinate' },
   { value: 'Saarland', label: 'Saarland' },
-  { value: 'Sachsen', label: 'Sachsen' },
-  { value: 'Sachsen-Anhalt', label: 'Sachsen-Anhalt' },
+  { value: 'Saxony', label: 'Saxony' },
+  { value: 'Saxony-Anhalt', label: 'Saxony-Anhalt' },
   { value: 'Schleswig-Holstein', label: 'Schleswig-Holstein' },
-  { value: 'Thüringen', label: 'Thüringen' },
+  { value: 'Thuringia', label: 'Thuringia' },
 ];
 
 const CalendarList: React.FC = () => {
   const [filteredEvents, setFilteredEvents] = useState<CalendarEvent[]>(calendarEvents);
   const [selectedYear, setSelectedYear] = useState<number | null>(2024);
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null);
-  const [selectedState, setSelectedState] = useState<string | null>(null);
+  const [selectedState, setSelectedState] = useState<ValueType<OptionTypeBase, false>>(null);
   const [isClient, setIsClient] = useState(false);
 
   const filterEvents = () => {
@@ -52,26 +53,23 @@ const CalendarList: React.FC = () => {
       filtered = filtered.filter((event) => event.date.getMonth() === selectedMonth);
     }
 
-    if (selectedState !== null && selectedState !== '') {
-      filtered = filtered.filter((event) => event.state === selectedState);
+    if (selectedState !== null && selectedState.value !== '0') {
+      filtered = filtered.filter((event) => event.state === selectedState.value);
     }
 
     setFilteredEvents(filtered);
   };
 
-  const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const year = parseInt(event.target.value, 10);
-    setSelectedYear(year === 0 ? null : year);
+  const handleYearChange = (selectedOption: ValueType<OptionTypeBase, false>) => {
+    setSelectedYear(selectedOption?.value === '0' ? null : parseInt(selectedOption?.value || '0', 10));
   };
 
-  const handleMonthChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const month = parseInt(event.target.value, 10);
-    setSelectedMonth(month === 0 ? null : month - 1);
+  const handleMonthChange = (selectedOption: ValueType<OptionTypeBase, false>) => {
+    setSelectedMonth(selectedOption?.value === '0' ? null : parseInt(selectedOption?.value || '0', 10) - 1);
   };
 
-  const handleStateChange = (selectedOption: ValueType<OptionTypeBase>, actionMeta: ActionMeta<OptionTypeBase>) => {
-    const state = selectedOption ? (selectedOption as { value: string }).value : null;
-    setSelectedState(state);
+  const handleStateChange = (selectedOption: ValueType<OptionTypeBase, false>) => {
+    setSelectedState(selectedOption);
   };
 
   useEffect(() => {
@@ -127,45 +125,56 @@ const CalendarList: React.FC = () => {
 
   return (
     <div className="calendar-container">
-      <FullBanner />
+      <FullBanner/>
+
       <div className="filter-section" style={{ display: 'grid' }}>
         <label>Jahr:</label>
-        <select value={selectedYear || '0'} onChange={handleYearChange}>
-          <option value="0">Alle</option>
-          <option value="2024">2024</option>
-          <option value="2025">2025</option>
-        </select>
+        <Select
+          options={[
+            { value: '0', label: 'All' },
+            { value: '2024', label: '2024' },
+            { value: '2025', label: '2025' },
+          ]}
+          value={{ value: selectedYear ? selectedYear.toString() : '0', label: selectedYear ? selectedYear.toString() : 'All' }}
+          onChange={handleYearChange}
+        />
       </div>
 
       <div className="filter-section" style={{ display: 'grid' }}>
         <label>Monat:</label>
-        <select value={selectedMonth !== null ? String(selectedMonth + 1) : '0'} onChange={handleMonthChange}>
-          <option value="0">Alle</option>
-          <option value="1">Januar</option>
-          <option value="2">Februar</option>
-          <option value="3">März</option>
-          <option value="4">April</option>
-          <option value="5">Mai</option>
-          <option value="6">Juni</option>
-          <option value="7">Juli</option>
-          <option value="8">August</option>
-          <option value="9">September</option>
-          <option value="10">Oktober</option>
-          <option value="11">November</option>
-          <option value="12">Dezember</option>
-        </select>
+        <Select
+          options={[
+            { value: '0', label: 'All' },
+            { value: '1', label: 'January' },
+            { value: '2', label: 'February' },
+            { value: '3', label: 'March' },
+            { value: '4', label: 'April' },
+            { value: '5', label: 'May' },
+            { value: '6', label: 'June' },
+            { value: '7', label: 'July' },
+            { value: '8', label: 'August' },
+            { value: '9', label: 'September' },
+            { value: '10', label: 'October' },
+            { value: '11', label: 'November' },
+            { value: '12', label: 'December' },
+          ]}
+          value={{ value: selectedMonth !== null ? (selectedMonth + 1).toString() : '0', label: selectedMonth !== null ? (selectedMonth + 1).toString() : 'All' }}
+          onChange={handleMonthChange}
+        />
       </div>
 
       <div className="filter-section" style={{ display: 'grid' }}>
         <label>Bundesland:</label>
         <Select
           options={stateOptions}
-          value={stateOptions.find((option) => option.value === selectedState)}
+          value={selectedState}
           onChange={handleStateChange}
         />
       </div>
 
-      {isClient && <div className="event-list">{groupedEventsByMonth()}</div>}
+      {isClient && (
+        <div className="event-list">{groupedEventsByMonth()}</div>
+      )}
     </div>
   );
 };
