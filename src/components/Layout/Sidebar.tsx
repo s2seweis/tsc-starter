@@ -85,7 +85,7 @@ const Sidebar: React.FC = () => {
             </span>
           ))}
         </div>
-        <div className='controllerContainer' style={{marginTop:"0px"}}>
+        <div className='controllerContainer' style={{marginTop:"-20px"}}>
           <AuthController/>
         </div>
       </nav>
