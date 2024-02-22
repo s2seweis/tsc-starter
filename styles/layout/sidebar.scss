@@ -46,11 +46,12 @@
 
 .navLink {
   margin-bottom: 20px;
-}
 
-.active {
-  color: #ff5733; /* Adjust the color to your preference */
-  font-weight: bold;
+  &.active {
+    color: #333A73; /* Menu item color */
+    // font-weight: bold;
+    background: aliceblue;
+  }
 }
 
 .submenu {
@@ -60,13 +61,13 @@
 .submenuLink {
   cursor: pointer;
   padding: 10px;
-  // color: #000; /* Black font color */
   text-decoration: none;
-}
 
-// .submenuLink:hover {
-//   background-color: #555;
-// }
+  &.active {
+    color: #387ADF; /* Submenu item color */
+    font-weight: bold;
+  }
+}
 
 a {
   color: black !important;

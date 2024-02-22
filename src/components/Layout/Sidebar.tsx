@@ -48,7 +48,9 @@ const Sidebar: React.FC = () => {
     <div className="submenu">
       {submenus.map((submenu) => (
         <Link key={submenu.path} href={submenu.path}>
-          <span className={`submenuLink ${isLinkActive(submenu.path) ? 'active' : ''}`}>{submenu.title}</span>
+          <span className={`submenuLink ${isLinkActive(submenu.path) ? 'active' : ''}`}>
+            {submenu.title}
+          </span>
         </Link>
       ))}
     </div>
