@@ -7,10 +7,7 @@ import { menuItems } from './menuItems'; // Import the updated menuItems
 import AuthController from '../AuthController/AuthController';
 
 const Sidebar: React.FC = () => {
-  const { isSidebarOpen, toggleSidebar } = useSidebarContext();
-  console.log("line:100", toggleSidebar);
-  console.log("line:101", isSidebarOpen);
-  
+  const { isSidebarOpen, toggleSidebar } = useSidebarContext();  
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
 

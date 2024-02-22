@@ -4,7 +4,6 @@ import Select, { ActionMeta, SingleValue } from 'react-select';
 import styles from '../../../styles/layout/navbar.module.scss';
 import { useSidebarContext } from '../../../context/SidebarContext';
 import Link from 'next/link';
-import AuthController from '../AuthController/AuthController';
 import { useRouter } from 'next/router';
 
 interface Option {
@@ -67,7 +66,6 @@ const Navbar: React.FC = () => {
       </header>
 
       <div className='loginButton' style={{ marginRight: "15px" }}>
-        {/* <AuthController /> */}
       </div>
 
       <Select

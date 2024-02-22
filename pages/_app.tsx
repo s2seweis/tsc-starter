@@ -1,5 +1,5 @@
-// pages/_app.tsx
 import React from 'react';
+import { AppProps } from 'next/app'; // Import AppProps from next/app
 import { AuthProvider } from '../context/AuthContext';
 import Layout from '../src/components/Layout/Layout';
 

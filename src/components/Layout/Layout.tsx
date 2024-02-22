@@ -10,7 +10,6 @@ import FullBanner from '../Banner/FullBanner';
 import SkyScraperLeft from '../Banner/SkyScraperLeft';
 import SkyScraperRight from '../Banner/SkyScraperRight';
 import Mobile from '../Banner/Mobile';
-
 // ###
 
 const imagePlaceholder = 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg';
