@@ -1,65 +1,73 @@
 /* sidebar.scss */
 
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: -200px;
-    height: 100%;
-    background-color: #333;
-    transition: left 0.3s ease-in-out;
-    z-index: 500 !important;
-    border: 0.5px solid lightgray;
-  }
-  
-  .open {
-    left: 0;
-  }
-  
-  .sidebarToggle {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    color: #fff;
-    z-index: 100;
-    padding: 5px;
-    align-items: center;
-    display: flex;
-    font-size: xx-large;
-  }
-  
-  .nav {
-    margin-top: 120px;
-    background: white;
-    height: 69.4%;
-  }
-  
-  .navLinks {
-    padding: 20px;
-    text-align: center;
-    margin-top: 70px;
-    font-size: 1.3rem;
-    display: grid;
-  }
-  
-  .active {
-    color: #ff5733; /* Adjust the color to your preference */
-    font-weight: bold;
-  }
-  
-  .submenu {
-    display: grid;
-  }
-  
-  .submenuLink {
-    cursor: pointer;
-    padding: 10px;
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .submenuLink:hover {
-    background-color: #555;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: -200px;
+  height: 100%;
+  background-color: #333;
+  transition: left 0.3s ease-in-out;
+  z-index: 500 !important;
+  border: 0.5px solid lightgray;
+}
+
+.open {
+  left: 0;
+}
+
+.sidebarToggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #fff;
+  z-index: 100;
+  padding: 5px;
+  align-items: center;
+  display: flex;
+  font-size: xx-large;
+}
+
+.nav {
+  margin-top: 120px;
+  background: white;
+  height: 67.9%;
+}
+
+.navLinks {
+  padding: 20px;
+  text-align: center;
+  margin-top: 70px;
+  font-size: 1.3rem;
+  display: grid;
+  margin-bottom: 15px !important;
+}
+
+.navLink {
+  margin-bottom: 20px;
+}
+
+.active {
+  color: #ff5733; /* Adjust the color to your preference */
+  font-weight: bold;
+}
+
+.submenu {
+  display: grid;
+}
+
+.submenuLink {
+  cursor: pointer;
+  padding: 10px;
+  // color: #000; /* Black font color */
+  text-decoration: none;
+}
+
+// .submenuLink:hover {
+//   background-color: #555;
+// }
+
+a {
+  color: black !important;
+}
