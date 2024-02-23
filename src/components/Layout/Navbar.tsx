@@ -84,6 +84,12 @@ const Navbar: React.FC = () => {
               </div>
             ))}
           </div>
+      <Select
+        className={styles.select}
+        options={options}
+        defaultValue={options[0]}
+        onChange={handleOptionChange}
+      />
         </nav>
       </header>
 
@@ -91,12 +97,6 @@ const Navbar: React.FC = () => {
         {/* ... */}
       </div>
 
-      <Select
-        className={styles.select}
-        options={options}
-        defaultValue={options[0]}
-        onChange={handleOptionChange}
-      />
     </nav>
   );
 };
