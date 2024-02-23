@@ -14,7 +14,7 @@ interface Option {
 const options: Option[] = [
   { value: '', label: 'Home' },
   { value: 'posts', label: 'Posts' },
-  { value: 'calendar', label: 'Calendar' }, // corrected typo in 'calendar'
+  { value: 'calendar', label: 'Calendar' },
 ];
 
 const Navbar: React.FC = () => {
@@ -28,11 +28,14 @@ const Navbar: React.FC = () => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
 
-      if (currentScrollPos > prevScrollPos) {
-        setIsMenuOpen(false);
-        setIsNavbarVisible(false);
-      } else {
-        setIsNavbarVisible(true);
+      if (currentScrollPos > 100) {
+        // Allow scroll functionality only when scrolled more than 100px from the top
+        if (currentScrollPos > prevScrollPos) {
+          setIsMenuOpen(false);
+          setIsNavbarVisible(false);
+        } else {
+          setIsNavbarVisible(true);
+        }
       }
 
       setPrevScrollPos(currentScrollPos);
@@ -61,7 +64,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={`${styles.navbar} ${isNavbarVisible ? '' : styles.hidden}`}>
-     <div className={styles.navItem}>
+      <div className={styles.navItem}>
         <div className={styles.sidebarToggle} onClick={handleToggleClick}>
           {isSidebarOpen ? <FaTimes /> : <FaBars />}
         </div>
@@ -84,20 +87,20 @@ const Navbar: React.FC = () => {
               </div>
             ))}
           </div>
-      <Select
-        className={styles.select}
-        options={options}
-        defaultValue={options[0]}
-        onChange={handleOptionChange}
-      />
+          <Select
+            className={styles.select}
+            options={options}
+            defaultValue={options[0]}
+            onChange={handleOptionChange}
+          />
         </nav>
       </header>
 
       <div className="loginButton" style={{ marginRight: '15px' }}>
         {/* ... */}
       </div>
-
     </nav>
   );
 };
+
 export default Navbar;
