@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa'; // Import FaTimes for the close icon
+import React, { useState, useEffect } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import Select, { ActionMeta, SingleValue } from 'react-select';
 import styles from '../../../styles/layout/navbar.module.scss';
 import { useSidebarContext } from '../../../context/SidebarContext';
@@ -14,47 +14,69 @@ interface Option {
 const options: Option[] = [
   { value: '', label: 'Home' },
   { value: 'posts', label: 'Posts' },
-  { value: 'calender', label: 'Calender' },
+  { value: 'calendar', label: 'Calendar' }, // corrected typo in 'calendar'
 ];
 
 const Navbar: React.FC = () => {
-  const {isSidebarOpen, toggleSidebar } = useSidebarContext();
-  console.log("Line:200", isSidebarOpen);
-  
+  const { isSidebarOpen, toggleSidebar } = useSidebarContext();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+
+      if (currentScrollPos > prevScrollPos) {
+        setIsMenuOpen(false);
+        setIsNavbarVisible(false);
+      } else {
+        setIsNavbarVisible(true);
+      }
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [prevScrollPos]);
 
   const handleOptionChange = (newValue: SingleValue<Option>, actionMeta: ActionMeta<Option>) => {
     if (newValue && 'value' in newValue) {
       router.push(`/${newValue.value}`);
-      setIsMenuOpen(false); // Close the menu when an option is selected
+      setIsMenuOpen(false);
+      setIsNavbarVisible(true);
     }
   };
 
   const handleToggleClick = () => {
     toggleSidebar();
-    setIsMenuOpen((prev) => !prev); // Toggle the menu state
+    setIsMenuOpen((prev) => !prev);
+    setIsNavbarVisible(true);
   };
 
   return (
-    <nav style={{ display: "flex" }} className={styles.navbar}>
-      <div className={styles.navItem}>
+    <nav className={`${styles.navbar} ${isNavbarVisible ? '' : styles.hidden}`}>
+     <div className={styles.navItem}>
         <div className={styles.sidebarToggle} onClick={handleToggleClick}>
           {isSidebarOpen ? <FaTimes /> : <FaBars />}
-          {/* {isMenuOpen ? <FaTimes /> : <FaBars />} */}
         </div>
         <div className={styles.logoMobile}>
-          <img style={{ width: "80px", marginRight:"15px" }} src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg" alt="Logo" />
+          <img style={{ width: '80px', marginRight: '15px' }} src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg" alt="Logo" />
         </div>
       </div>
 
       <header className={styles.menu1}>
         <nav className={styles.navbar}>
           <div className={styles.logo}>
-            <img style={{ width: "80px" }} src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg" alt="Logo" />
+            <img style={{ width: '80px' }} src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg" alt="Logo" />
           </div>
           <div className={styles.navLinks}>
-            {options.map(option => (
+            {options.map((option) => (
               <div key={option.value}>
                 <Link href={`/${option.value}`}>
                   <span className={styles.navLink}>{option.label}</span>
@@ -65,7 +87,8 @@ const Navbar: React.FC = () => {
         </nav>
       </header>
 
-      <div className='loginButton' style={{ marginRight: "15px" }}>
+      <div className="loginButton" style={{ marginRight: '15px' }}>
+        {/* ... */}
       </div>
 
       <Select
@@ -77,5 +100,4 @@ const Navbar: React.FC = () => {
     </nav>
   );
 };
-
 export default Navbar;

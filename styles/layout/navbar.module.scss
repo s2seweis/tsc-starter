@@ -1,129 +1,115 @@
+// styles/layout/navbar.module.scss
+
 .navbar {
   background-color: #333;
   color: #fff;
   padding: 1rem;
   display: flex;
-  align-items: center; // Center items vertically
-
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #333;
   padding: 10px;
-  z-index: 1000; /* Ensure it's above other content */
-}
+  z-index: 1000;
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
 
-body {
-  margin-top: 60px !important; /* Adjust the value based on your navbar height */
-}
-
-.navList {
-  list-style-type: none;
-  display: flex;
-}
-
-.navItem {
-  display: flex;
-
-}
-
-@media screen and (max-width: 600px) {
-  .navItem {
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
+  &.hidden {
+    transform: translateY(-100%); // Slide up to hide the navbar
   }
-}
 
-.navLink {
-  color: #fff;
-  text-decoration: none;
-  padding: 0.5rem;
-}
-
-.navLink:hover {
-  background-color: #555;
-}
-
-.sidebarToggle {
-  display: none; // Hide the button by default
-  font-size: 15px;
-  padding: 5px;
-  // min-height: 38px;  
-  height: 38px;
-  width: 38px;
-  justify-content: center;
-  // font-size: larger;
-  font-size: 1.8rem;
- border: 1px solid white ; 
-
-  @media (max-width: 600px) {
-    // display: block; // Show the button only when screen width is less than or equal to 600px
+  .navList {
+    list-style-type: none;
     display: flex;
-    align-items: center;
   }
-}
 
-.logoMobile {
-  display: none; // Hide the button by default
-  font-size: 15px;
-  padding: 5px;
-  min-height: 38px;
-
-  @media (max-width: 600px) {
-    display: block; // Show the button only when screen width is less than or equal to 600px
+  .navItem {
+    display: flex;
   }
-}
 
-.menu1 {
-  display: flex; // Hide the button by default
-
-  @media (max-width: 600px) {
-    display: none; // Show the button only when screen width is less than or equal to 600px
+  @media screen and (max-width: 600px) {
+    .navItem {
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
-}
 
-// ### React-Select
+  .navLink {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem;
+  }
 
-.select {
-  width: 200px;
-  margin-left: auto;
-  /* Push the select to the right */
-  color: black;
-}
+  .navLink:hover {
+    background-color: #555;
+  }
 
-@media screen and (max-width: 600px) {
-  .select {
+  .sidebarToggle {
     display: none;
+    font-size: 15px;
+    padding: 5px;
+    height: 38px;
+    width: 38px;
+    justify-content: center;
+    font-size: 1.8rem;
+    border: 1px solid white;
+
+    @media (max-width: 600px) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .logoMobile {
+    display: none;
+    font-size: 15px;
+    padding: 5px;
+    min-height: 38px;
+
+    @media (max-width: 600px) {
+      display: block;
+    }
+  }
+
+  .menu1 {
+    display: flex;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+
+  .select {
+    width: 200px;
+    margin-left: auto;
+    color: black;
+
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+  }
+
+  .select__indicator {
+    color: #333;
+  }
+
+  .select__menu {
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .select__option {
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .select__option--is-selected {
+    color: red !important;
   }
 }
-
-/* Style the dropdown indicator */
-.select__indicator {
-  color: #333;
-}
-
-/* Style the dropdown menu */
-.select__menu {
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Style the dropdown option */
-.select__option {
-  padding: 10px;
-  cursor: pointer;
-}
-
-/* Style the selected option */
-.select__option--is-selected {
-  // background-color: #007bff;
-  // color: white;
-  color: red !important;
-}
-
-// ###
 
 .header {
   display: flex;
@@ -142,5 +128,5 @@ body {
 }
 
 .active {
-  color: white; // White color for active link
+  color: white;
 }
