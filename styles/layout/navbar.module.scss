@@ -42,8 +42,9 @@
   height: 38px;
   width: 38px;
   justify-content: center;
-  font-size: larger;
- 
+  // font-size: larger;
+  font-size: 1.8rem;
+ border: 1px solid white ; 
 
   @media (max-width: 600px) {
     // display: block; // Show the button only when screen width is less than or equal to 600px

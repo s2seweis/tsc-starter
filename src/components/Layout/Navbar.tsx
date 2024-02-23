@@ -39,10 +39,10 @@ const Navbar: React.FC = () => {
   return (
     <nav style={{ display: "flex" }} className={styles.navbar}>
       <div className={styles.navItem}>
-        <button className={styles.sidebarToggle} onClick={handleToggleClick}>
+        <div className={styles.sidebarToggle} onClick={handleToggleClick}>
           {isSidebarOpen ? <FaTimes /> : <FaBars />}
           {/* {isMenuOpen ? <FaTimes /> : <FaBars />} */}
-        </button>
+        </div>
         <div className={styles.logoMobile}>
           <img style={{ width: "80px", marginRight:"15px" }} src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg" alt="Logo" />
         </div>
