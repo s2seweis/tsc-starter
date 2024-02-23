@@ -6,7 +6,7 @@ export const menuItems = [
       path: '/',
       submenus: [
         { title: 'Contact', path: '/contact' },
-        { title: 'Calendar', path: '/calender' },
+        { title: 'Calendar', path: '/calendar' },
         { title: 'Login', path: '/login' },
         { title: 'Home', path: '/' },
       ],
