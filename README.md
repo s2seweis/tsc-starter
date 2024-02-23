@@ -51,6 +51,19 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser to explore 
 - TypeScript
 - CSS Modules and SCSS for styling
 - External libraries for advanced layout and calendar features
+- Use of Local Storage for remember the selected MenuItems of the Sidbar during a rerendering
+
+## Technologies Coming Soon
+
+- Postgre SQL for load some state/data
+- Redux for State Management
+- Docker for dockerize the App and the Database
+- PWA for provide a more native feeling
+- Webpack:
+- -  Module Bundling: For faster page load times, 
+- -  Hot Module Replacement(HMR): For faster development cycle, 
+- -  Code Splitting: For Code Splitting for better performance, 
+- -  Plugins and Loaders: For Code minification 
 
 ## Contributing
 
